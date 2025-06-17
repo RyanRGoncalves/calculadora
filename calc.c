@@ -4,24 +4,25 @@
 
 void main() {
 	// Introdução
-	int escolha;
-	float num1;
-	float num2;
+	int escolhaint;
+	char escolhachar;
+	float num[2];
 	float resultado;
+
+	scanf("%c",&escolhachar);
+
 	printf("Bem vindo a calculadora, digite o número da operação para escolher-lá:");
 	do {
-		printf("\n1. Adição\n2. Subtração\n3. Multiplicação\n4. Divisão\n\n");
-		scanf("%d",&escolha);
+		escolhaint = intqna("\n1. Adição\n2.Subtração\n3.Multiplicação\n4.Divisão\n\n");
 
 		//Calculos
-		switch (escolha) {
+		switch (escolhaint) {
 			case 1:
-				printf("Coloque o primeiro número.\n");
-				scanf("%d",&num1);
-				printf("Coloque o segundo número.\n");
-				scanf("%d",&num2);
-				resultado = adicao(num1, num2);
-				printf("A adição destes números são: %d\n",resultado);
+				printf("Escolheu a adição,\n");
+				num[0] = (float) intqna("Primeiro número: ");
+				num[1] = (float) intqna("Segundo número: ");
+				resultado = adicao(num[0], num[1]);
+				printf("A adição destes números são: %.2f\n",resultado);
 				break;
 			case 2:
 				printf("Subtração");
@@ -36,11 +37,10 @@ void main() {
 				printf("Fora do nosso alcance.");
 				break;
 		}
-		printf("Deseja calcular novamente?\n0. Não\n1. Sim");
-		scanf("%d",&escolha);
-		if(escolha == 1) {
+		escolhachar = charqna("Deseja continuar a usar a calculadora?\n Pressione \"q\" para sair, \"p\" para continuar.");
+		if(escolhachar == 'q' || escolhachar == 'Q') {
 			printf("Então escolha novamente qual operação deseja utilizar.");
 		}
 	}
-	while (escolha == 1);
+	while (escolhachar == 'q' || escolhachar == 'Q');
 }
